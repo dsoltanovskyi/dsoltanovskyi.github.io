@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dmytro Soltanovskyi, Senior Frontend Engineer</title>
+<meta name="description" content="Senior React and React Native engineer with 5+ years in fintech and payments. Checkout flows, merchant portals, mobile apps. Open to remote roles in the EU and US.">
+<meta name="theme-color" content="#f7f8f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1214" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Dmytro Soltanovskyi, Senior Frontend Engineer">
+<meta property="og:description" content="I build payment flows that don't fail. React, React Native, TypeScript. Fintech and payments.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://dsoltanovskyi.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://dsoltanovskyi.github.io/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f7a55'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' text-anchor='middle' fill='white'%3EDS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --bg:#f7f8f9;--fg:#16191d;--mute:#5a626b;--line:#dde1e5;--soft:#eef0f2;
+  --acc:#0f7a55;--on-acc:#fff;--glow:rgba(15,122,85,.10);--glow2:rgba(15,122,85,.20);
+  --r:8px;--wrap:1120px;--nav:64px;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#0f1214;--fg:#e8ebee;--mute:#98a1aa;--line:#242b30;--soft:#161b1f;
+  --acc:#4cc79b;--on-acc:#07130e;--glow:rgba(76,199,155,.10);--glow2:rgba(76,199,155,.20);
+}}
+:root[data-theme=dark]{
+  --bg:#0f1214;--fg:#e8ebee;--mute:#98a1aa;--line:#242b30;--soft:#161b1f;
+  --acc:#4cc79b;--on-acc:#07130e;--glow:rgba(76,199,155,.10);--glow2:rgba(76,199,155,.20);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav) + 16px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.04;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--acc);color:var(--on-acc);padding:8px 14px;border-radius:var(--r);z-index:20;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;height:var(--nav);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-weight:600;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+.links{display:flex;align-items:center;gap:28px;font-size:.92rem}
+.links a{text-decoration:none;color:var(--mute);transition:color .2s}
+.links a:hover,.links a[aria-current]{color:var(--fg)}
+.links .btn{color:var(--on-acc)}
+
+.theme{position:relative;width:46px;height:26px;padding:0;border:1px solid var(--line);border-radius:99px;background:var(--soft);cursor:pointer;flex:none;transition:background .25s,border-color .25s}
+.theme::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--mute);transition:transform .3s var(--ease),background .25s}
+.theme[aria-checked=true]{border-color:var(--acc)}
+.theme[aria-checked=true]::after{transform:translateX(20px);background:var(--acc)}
+.theme:hover{border-color:var(--mute)}
+.theme[aria-checked=true]:hover{border-color:var(--acc)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;white-space:nowrap;padding:10px 18px;border-radius:var(--r);background:var(--acc);color:var(--on-acc);font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--acc);transition:transform .2s var(--ease),filter .2s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn:active{transform:scale(.98)}
+.btn.alt{background:transparent;color:var(--fg);border-color:var(--line)}
+button.btn{font:inherit;font-weight:600;font-size:.95rem;cursor:pointer}
+.btn.alt:hover{border-color:var(--mute);filter:none}
+.tl{color:var(--fg);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;transition:text-decoration-color .2s,color .2s}
+.tl:hover{text-decoration-color:var(--acc);color:var(--acc)}
+
+/* hero */
+.hero{min-height:calc(100dvh - var(--nav));display:flex;align-items:center;padding:48px 0 72px;
+  position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;inset:-25%;z-index:0;pointer-events:none;will-change:transform}
+.hero::before{background:radial-gradient(38% 38% at 22% 32%,var(--glow2),transparent 70%),radial-gradient(30% 30% at 62% 18%,var(--glow),transparent 70%);animation:flow-a 18s ease-in-out infinite alternate}
+.hero::after{background:radial-gradient(34% 34% at 78% 72%,var(--glow2),transparent 70%),radial-gradient(28% 28% at 35% 85%,var(--glow),transparent 70%);animation:flow-b 24s ease-in-out infinite alternate}
+.hero>.wrap{position:relative;z-index:1;width:100%}
+@keyframes flow-a{0%{transform:translate3d(-6%,-4%,0) scale(1)}50%{transform:translate3d(8%,5%,0) scale(1.18) rotate(10deg)}100%{transform:translate3d(-2%,9%,0) scale(1.06) rotate(-8deg)}}
+@keyframes flow-b{0%{transform:translate3d(7%,5%,0) scale(1.1) rotate(-6deg)}50%{transform:translate3d(-8%,-4%,0) scale(1)}100%{transform:translate3d(4%,-8%,0) scale(1.2) rotate(9deg)}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none}}
+.eyebrow{font:500 .8rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--glow)}
+.hero h1{font-size:clamp(2.5rem,7vw,5.25rem);line-height:1.02;letter-spacing:-.045em;max-width:15ch}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--acc);padding-bottom:.06em}
+.hero p{margin-top:28px;max-width:46ch;font-size:1.15rem;color:var(--mute)}
+.cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
+
+section{padding:96px 0 88px}
+section h2{font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.1;margin-bottom:48px;max-width:20ch}
+
+/* numbers: one lead figure, four supporting */
+.nums{display:grid;grid-template-columns:5fr 7fr;gap:48px 64px;align-items:end}
+.lead-num b{display:block;font:500 clamp(5rem,13vw,10rem)/.9 var(--mono);letter-spacing:-.06em;color:var(--acc)}
+.lead-num span{display:block;margin-top:16px;max-width:30ch;color:var(--mute)}
+.nums ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:36px 32px}
+.nums li{border-top:1px solid var(--line);padding-top:16px}
+.nums li b{display:block;font:500 2.2rem/1 var(--mono);letter-spacing:-.04em;margin-bottom:10px}
+.nums li span{color:var(--mute);font-size:.93rem;display:block;max-width:26ch}
+
+/* work */
+.case{border-top:1px solid var(--line);padding:32px 0 8px}
+.case h3{font-size:1.45rem;line-height:1.2}
+.case .where{font:400 .85rem var(--mono);color:var(--mute);margin-bottom:10px;display:block}
+.case dl{margin:20px 0 0;display:grid;gap:14px}
+.case dt{font:500 .75rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:2px}
+.case dd{margin:0}
+.case .res{color:var(--acc);font-weight:600}
+.case.big{display:grid;grid-template-columns:5fr 7fr;gap:24px 64px;padding-bottom:48px}
+.case.big dl{margin-top:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+.pair .case{padding-bottom:40px}
+
+/* ai */
+.ai{background:var(--soft);border-block:1px solid var(--line)}
+.ai .ai-grid{display:grid;grid-template-columns:7fr 5fr;gap:48px 80px;align-items:start}
+.ai .txt+.txt{margin-top:16px}
+.loop{margin:72px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.loop>div{border-top:2px solid var(--acc);padding-top:16px;display:block}
+.loop h3{font-size:1rem;font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+.loop p{color:var(--mute);font-size:.95rem;margin:0}
+.ai h2{margin-bottom:24px;max-width:16ch}
+.ai .txt{font-size:1.15rem;color:var(--mute);max-width:52ch}
+.ai ul{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.92rem}
+.ai li{padding:14px 0;border-bottom:1px solid var(--line)}
+.ai li:last-child{border:0}
+.ai li small{display:block;margin-top:4px;color:var(--mute);font:400 .85rem var(--sans)}
+
+/* experience */
+.job{display:grid;grid-template-columns:200px 1fr;gap:12px 48px;padding:32px 0;border-top:1px solid var(--line)}
+.job time{font:400 .88rem var(--mono);color:var(--mute);padding-top:6px}
+.job h3{font-size:1.25rem}
+.job .co{color:var(--mute);margin:2px 0 14px}
+.job ul{margin:0;padding-left:18px;color:var(--mute);max-width:64ch}
+.job li{margin-bottom:6px}
+.job li::marker{color:var(--acc)}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 48px}
+.stack h3{font:500 .8rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.stack p{line-height:1.8}
+.stack .wide{grid-column:span 2}
+
+/* contact */
+.contact{padding-bottom:64px}
+.mail{display:inline-block;font-size:clamp(1.6rem,5.5vw,3.6rem);font-weight:600;letter-spacing:-.04em;line-height:1.15;text-decoration:none;word-break:break-word;border-bottom:2px solid var(--line);transition:border-color .2s,color .2s}
+.mail:hover{border-color:var(--acc);color:var(--acc)}
+.contact .row{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px 32px}
+.strip{border-block:1px solid var(--line);padding:28px 0;background:var(--soft)}
+.setup{margin:0;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:16px 56px}
+.setup dt{font:500 .75rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.setup dd{margin:0}
+.contact .meta{margin-top:20px;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mute);font-size:.88rem}
+
+/* motion */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0ms)}
+.js .rv.in{opacity:1;transform:none}
+
+/* mobile: every multi-column block collapses here */
+@media(max-width:860px){
+  .links a[href^="#"],.links .btn{display:none}
+  .links{gap:20px}
+  .hero{min-height:0;align-items:flex-start;padding:56px 0 64px}
+  .hero h1{font-size:clamp(2.75rem,12vw,4rem)}
+  .nums,.case.big,.pair,.ai .ai-grid{grid-template-columns:1fr}
+  .loop{grid-template-columns:1fr 1fr;margin-top:48px}
+  .pair{gap:0}
+  .stack{grid-template-columns:1fr 1fr}
+  .stack .wide{grid-column:auto}
+  .job{grid-template-columns:1fr;gap:4px}
+  section{padding:72px 0 64px}
+}
+@media(max-width:520px){
+  .nums ul,.stack,.loop{grid-template-columns:1fr}
+  .setup{grid-template-columns:1fr 1fr;gap:20px 24px}
+  .setup div:last-child{grid-column:1/-1}
+  .cta .btn{flex:1 1 auto;justify-content:center}
+  .brand{font-size:.95rem}
+}
+@media print{nav,body::after{display:none}.js .rv{opacity:1;transform:none}section{padding:24px 0}.hero{min-height:0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to content</a>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Dmytro Soltanovskyi</a>
+    <div class="links">
+      <a href="#results">Results</a>
+      <a href="#work">Work</a>
+      <a href="#ai">AI workflow</a>
+      <a href="#experience">Experience</a>
+      <a href="https://github.com/dsoltanovskyi">GitHub</a>
+      <a href="Dmytro_Soltanovskyi-CV.pdf" target="_blank" rel="noopener">CV</a>
+      <a href="#contact" class="btn">Email me</a>
+      <button type="button" class="theme" id="theme" role="switch" aria-label="Dark theme" aria-checked="false"></button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow rv"><i></i>Open to remote roles, EU and US</div>
+      <h1 class="rv" style="--d:80ms">I build payment flows that <em>don't fail.</em></h1>
+      <p class="rv" style="--d:160ms">Senior React and React Native engineer. 5+ years in fintech, owning web and mobile from architecture to store release.</p>
+      <div class="cta rv" style="--d:240ms">
+        <a class="btn" href="#contact">Email me</a>
+        <a class="btn alt" href="Dmytro_Soltanovskyi-CV.pdf" download>Download CV</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip"><div class="wrap">
+    <dl class="setup rv">
+      <div><dt>Format</dt><dd>B2B contractor (sole proprietor)</dd></div>
+      <div><dt>Start</dt><dd>Within 3 days</dd></div>
+      <div><dt>Hours</dt><dd>10:00 to 18:00 Kyiv time, full overlap with CET</dd></div>
+    </dl>
+  </div></div>
+
+  <section id="results">
+    <div class="wrap">
+      <h2 class="rv">Numbers I can point to</h2>
+      <div class="nums">
+        <div class="lead-num rv">
+          <b>-20%</b>
+          <span>failed payments, after merging Stripe, PayPal and Mollie into one checkout.</span>
+        </div>
+        <ul>
+          <li class="rv"><b>~1,500</b><span>merchants use the portal I built, every day.</span></li>
+          <li class="rv" style="--d:80ms"><b>-35%</b><span>initial load time on the merchant portal.</span></li>
+          <li class="rv" style="--d:160ms"><b>~10,000</b><span>rental agreements signed through the pipeline I built.</span></li>
+          <li class="rv" style="--d:240ms"><b>-25%</b><span>late rent payments after automatic reminders.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding-top:24px">
+    <div class="wrap">
+      <h2 class="rv">Selected work</h2>
+
+      <article class="case big rv">
+        <div>
+          <span class="where">Hustle Pey, fintech, USA</span>
+          <h3>One checkout for three payment providers</h3>
+        </div>
+        <dl>
+          <div><dt>Problem</dt><dd>Each provider has its own callbacks, payment states and errors. Users hit failed payments.</dd></div>
+          <div><dt>What I did</dt><dd>One checkout flow on web and mobile with unified state and error handling. Shipped behind feature flags with A/B tests, covered by Jest, React Testing Library and Playwright.</dd></div>
+          <div><dt>Result</dt><dd class="res">About 20% fewer failed payments.</dd></div>
+          <div><dt>Stack</dt><dd class="mono" style="font-size:.9rem">React, Next.js, React Native, TypeScript, Stripe, PayPal, Mollie, Playwright</dd></div>
+        </dl>
+      </article>
+
+      <div class="pair">
+        <article class="case rv">
+          <span class="where">Hustle Pey, fintech, USA</span>
+          <h3>Merchant portal and mobile app, owned end to end</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Online and in-person merchants needed one place for payments, transactions and access control, on web and phone.</dd></div>
+            <div><dt>What I did</dt><dd>Dashboards, transaction views and role-based access. Faster load through code splitting, caching and list virtualization. On mobile: biometric auth, secure token storage, push notifications, store releases.</dd></div>
+            <div><dt>Result</dt><dd class="res">~1,500 daily merchants, ~35% faster first load.</dd></div>
+          </dl>
+        </article>
+        <article class="case rv" style="--d:100ms">
+          <span class="where">Rendin, proptech, Poland, team of 6</span>
+          <h3>Rental agreements, rent ledger and a BLE digital key</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Landlords and tenants handled contracts, payments and building access separately and by hand.</dd></div>
+            <div><dt>What I did</dt><dd>Shared draft locked for signing, signatures from both sides, generated PDF. Rent ledger with reminders and a debt view. BLE key through a native module, timed QR and Bluetooth guest passes, access suspended when rent goes unpaid.</dd></div>
+            <div><dt>Result</dt><dd class="res">~10,000 signed agreements, ~25% fewer late payments.</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai" class="ai">
+    <div class="wrap">
+      <div class="ai-grid">
+        <div class="rv">
+          <h2>AI makes me faster. Review keeps it safe.</h2>
+          <p class="txt">I use Claude Code every day, and at Hustle Pey I set it up for the whole team. Routine work gets faster, and quality does not drop.</p>
+          <p class="txt">AI writes a first draft. I decide what gets built, check the result and own it. Every AI-generated diff goes through the same code review as human code.</p>
+        </div>
+        <ul class="rv" style="--d:120ms">
+          <li>CLAUDE.md<small>Shared team conventions, written once and used by everyone.</small></li>
+          <li>Skills<small>Reusable recipes for components, tests and migrations.</small></li>
+          <li>Subagents<small>Routine tasks run in parallel while I keep the main thread.</small></li>
+          <li>Hooks<small>Lint and type checks run automatically on every change.</small></li>
+          <li>Plan mode<small>I approve the approach before any file is touched.</small></li>
+        </ul>
+      </div>
+      <div class="loop">
+        <div class="rv"><h3>Write the spec</h3><p>I describe the task, constraints and expected result before any code is generated.</p></div>
+        <div class="rv" style="--d:80ms"><h3>Plan first</h3><p>I check the approach and the files it will touch, then approve it.</p></div>
+        <div class="rv" style="--d:160ms"><h3>Delegate the routine</h3><p>Components, tests, migrations and refactoring go to skills and subagents. Architecture stays with me.</p></div>
+        <div class="rv" style="--d:240ms"><h3>Review everything</h3><p>Hooks catch lint and type errors. Then a normal pull request review, no exceptions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="rv">Experience</h2>
+      <div class="job rv">
+        <time>Sep 2023 - Sep 2026</time>
+        <div>
+          <h3>Senior React and React Native Engineer</h3>
+          <p class="co">Hustle Pey, payment platform, USA (remote)</p>
+          <ul>
+            <li>Sole owner of the web portal and the iOS and Android app.</li>
+            <li>Kafka producers and consumers between payment and alerting services. AWS Cognito (MFA, social login), SES, S3, CloudWatch.</li>
+            <li>Ran code reviews, mentored 3 junior developers, presented demos to customers.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job rv">
+        <time>Oct 2021 - Aug 2023</time>
+        <div>
+          <h3>React and React Native Developer</h3>
+          <p class="co">Rendin, rental platform, Poland (remote)</p>
+          <ul>
+            <li>Listings, tenant verification and protected rental agreements on web and mobile.</li>
+            <li>Unit and component tests on signing and charge logic, so it stays safe to refactor.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job rv">
+        <time>Oct 2020 - Sep 2021</time>
+        <div>
+          <h3>Frontend Developer</h3>
+          <p class="co">Webline, digital studio, Ukraine</p>
+          <ul>
+            <li>15+ landing pages and small web apps from Figma, Lighthouse 90+.</li>
+            <li>API, CMS and analytics integrations.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" style="padding-top:24px">
+    <div class="wrap">
+      <h2 class="rv">Tools I work with</h2>
+      <div class="stack rv">
+        <div class="wide"><h3>Frontend</h3><p>React, Next.js, TypeScript, Redux Toolkit, Zustand, TanStack Query, React Hook Form, Zod, Storybook, Tailwind CSS, i18next, PWA and Web Push</p></div>
+        <div><h3>Payments</h3><p>Stripe, PayPal, Mollie, Finix, A/B testing, feature flags</p></div>
+        <div class="wide"><h3>Mobile</h3><p>React Native, Expo, native modules, BLE, biometric auth, secure storage, push notifications, App Store and Google Play releases</p></div>
+        <div><h3>Testing</h3><p>Jest, React Testing Library, Playwright</p></div>
+        <div class="wide"><h3>Backend and cloud</h3><p>Node.js, NestJS, GraphQL, WebSocket, PostgreSQL, Prisma, Kafka, AWS</p></div>
+        <div><h3>Languages</h3><p>Ukrainian (native), English (B2), Polish (A2)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <h2 class="rv">Let's talk about your next product.</h2>
+      <a class="mail rv" href="mailto:d.soltanovskyi.work@gmail.com">d.soltanovskyi.work@gmail.com</a>
+      <div class="row rv">
+        <button type="button" class="btn alt" id="copy" data-mail="d.soltanovskyi.work@gmail.com">Copy email</button>
+        <a class="tl" href="https://github.com/dsoltanovskyi">GitHub</a>
+        <a class="tl" href="https://linkedin.com/in/dmytro-soltanovskyi">LinkedIn</a>
+        <a class="tl" href="https://t.me/d_soltanovskyi">Telegram @d_soltanovskyi</a>
+        <a class="tl" href="Dmytro_Soltanovskyi-CV.pdf" download>Download CV</a>
+      </div>
+      <p class="meta rv">Based in Kyiv. I reply within a day.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Dmytro Soltanovskyi</div></footer>
+
+<script>
+const rv=[...document.querySelectorAll('.rv')];
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  rv.forEach(el=>io.observe(el));
+}else rv.forEach(el=>el.classList.add('in'));
+// current section in nav
+const links=[...document.querySelectorAll('.links a[href^="#"]:not(.btn)')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+links.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));s&&so.observe(s)});
+const root=document.documentElement,tb=document.getElementById('theme');
+const cur=()=>root.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+const label=()=>tb.setAttribute('aria-checked',cur()==='dark');
+tb.addEventListener('click',()=>{const n=cur()==='dark'?'light':'dark';root.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}label()});
+label();
+const cb=document.getElementById('copy');
+cb.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(cb.dataset.mail);cb.textContent='Copied'}
+  catch{cb.textContent=cb.dataset.mail}
+  setTimeout(()=>cb.textContent='Copy email',2000);
+});
+</script>
+</body>
+</html>
